@@ -25,4 +25,9 @@ class Querie
     {
 
     }
+
+    public function __destruct()
+    {
+        unset($this->db);
+    }
 }
