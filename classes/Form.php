@@ -46,6 +46,8 @@ class Form
     {
         $conf = parse_ini_file($this->path . $this->file . ".ini", true);
 
+        $hiddenFieldName = array_key_exists('itemHiddenField', $conf) ? $conf['itemHiddenField']['name'] : false;
 
+        var_dump($hiddenFieldName);
     }
 }
