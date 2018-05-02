@@ -11,12 +11,27 @@ class Form
         $this->file = $f;
     }
 
-    public function frmGenerate()
+    public function frmGenerate($actionURI)
     {
         $conf = parse_ini_file($this->path . $this->file . ".ini", true);
-        echo "<pre>";
-        print_r($conf);
-        echo "</pre>";
+        $form = "<form method='post' action='$actionURI'>";
+
+        foreach($conf as $content) {
+            $form .= "<div>";
+            $form .= "<";
+            $form .= $content['tag'];
+            $form .= " ";
+            $form .= "type='";
+            $form .= $content['type'];
+            $form .= "' ";
+            $form .= isset($content['name']) ? "name='" . $content['name'] . "'" : "";
+            $form .= " />";
+            $form .= "</div>";
+        }
+
+        $form .= "</form>";
+
+        return $form;
     }
 
     public function frmCheck()
