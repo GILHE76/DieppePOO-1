@@ -6,6 +6,6 @@ spl_autoload_register('classAutoLoader');
 
 $test = new Form(PATHCONF, "registration");
 
-$test->frmGenerate();
+echo $test->frmGenerate("toto.com");
 
 
