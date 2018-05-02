@@ -45,9 +45,21 @@ class Form
     public function frmCheck()
     {
         $conf = parse_ini_file($this->path . $this->file . ".ini", true);
-
         $hiddenFieldName = array_key_exists('itemHiddenField', $conf) ? $conf['itemHiddenField']['name'] : false;
 
-        var_dump($hiddenFieldName);
+        if (isset($_POST[$hiddenFieldName])) {
+            $errors = array();
+            foreach($conf as $content) {
+                if (isset($content['name']) && $content['name'] != "hiddenField") {
+                    $value = $content['name'];
+                    $$value = $_POST[$value];
+                    echo $$value . "<br />";
+                }
+            }
+        }
+
+        else {
+            return false;
+        }
     }
 }
