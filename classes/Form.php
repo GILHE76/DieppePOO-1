@@ -18,6 +18,14 @@ class Form
 
         foreach($conf as $content) {
             $form .= "<div>";
+
+            if (isset($content['name'])) {
+                $form .= "<label for='" . $content['name'] . "'>";
+                $form .= ucfirst($content['name']);
+                $form .= "&nbsp;: ";
+                $form .= "</label>";
+            }
+
             $form .= "<";
             $form .= $content['tag'];
             $form .= " ";
